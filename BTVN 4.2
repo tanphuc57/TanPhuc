@@ -1,0 +1,17 @@
+#Mã hóa thay thế bằng phép toán cộng với k=STT theo danh sách. Plaintext là P=TenCuaBan. Thep Z26.
+def encode_z26(plaintext, k):
+    ciphertext = ""
+    for char in plaintext:
+        if char.isalpha():
+            shift = k%26
+            base = ord('A') if char.isupper() else ord('a')
+            encode_char = chr((ord(char) - base + shift) % 26 + base)
+            ciphertext += encode_char
+        else:
+            ciphertext += char
+    return ciphertext
+
+plaintext = "Nguyen Cong Tan Phuc"
+k=39
+ciphertext = encode_z26(plaintext, k)
+print("Ciphertext:", ciphertext)
